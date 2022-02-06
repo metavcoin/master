@@ -1,0 +1,5 @@
+type project
+authors metavcoin
+
+dependencies
+    Zulib >= 0.0.1

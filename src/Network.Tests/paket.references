@@ -1,0 +1,7 @@
+FSharp.Core redirects: on
+FsUnit
+FsNetMQ
+FSharp.Control.Reactive
+System.Reactive.Compatibility
+FSharp.Compiler.Tools
+Logary

@@ -1,0 +1,56 @@
+image: Visual Studio 2017
+
+
+init:
+  # Set "build version number" to "short-commit-hash" or when tagged to "tag name" (Travis style)
+  - ps: >-
+      if ($env:APPVEYOR_REPO_TAG -eq "true")
+      {
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))"
+      }
+ 
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
+install:
+  - ps: Install-Product node 10
+  - npm install --global npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+
+skip_non_tags: true
+
+cache:
+  - packages
+
+before_build:
+  - ps: >-
+      "registry=https://www.myget.org/F/metavcoin/npm/`r`n//www.myget.org/F/metavcoin/npm/:_authToken=`$`{MYGET_TOKEN`}" | Out-File (Join-Path $ENV:APPVEYOR_BUILD_FOLDER "package/.npmrc") -Encoding UTF8   
+build_script:
+  - paket.cmd restore
+  - msbuild src/metavcoin.sln /property:Configuration=Release /t:Node
+  - cd package
+  - md Release
+  - xcopy ..\src\Node\bin\Release Release /E /H 
+  - type nul > Release\.npmignore
+  - copy ..\src\DataAccess\bin\Release\DataAccess.dll.config Release\DataAccess.dll.config
+  - npm version %APPVEYOR_BUILD_VERSION%
+  - bash.exe pack.sh
+  - npm publish package.tar.gz
+  - cd ..
+  - paket.cmd pack --version %APPVEYOR_BUILD_VERSION% .
+
+
+artifacts:
+  - path: '*.nupkg'
+  - path: 'package\package.tar.gz'
+
+deploy:
+  - provider: NuGet
+    server: https://www.myget.org/F/metavcoin/api/v2/package
+    api_key:
+      secure: tyLfoWjP8lgJNO8kBD1NQX4twHj/GVSwTUm/GG2yVAM3Ir3F3d7jzFEThgeFE96e
+    skip_symbols: true

@@ -1,0 +1,102 @@
+<class
+        name = "NetworkMessage"
+        signature = "19317"
+        title = "Network Message"
+        script = "zproto_codec_fs"
+        source_dir = "./"
+        test_dir ="../Network.Tests/"
+        module ="Network.Message"
+        test_module="Network.Tests.MessageTests"
+>
+
+    <message name = "Hello" id = "1">
+        <field name="network" type="number" size="4">Network</field>
+        <field name = "version" type = "number" size="4" >Version</field>
+        <field name = "nonce" type = "number" size="4" >Nonce</field>
+    </message>
+
+    <message name = "Hello Ack" id = "2">
+        <field name="network" type="number" size="4">Network</field>
+        <field name = "version" type = "number" size="4" >Version</field>
+    </message>
+
+    <message name="Ping" id="3">
+        <field name = "nonce" type = "number" size="4" >Nonce</field>
+    </message>
+
+    <message name="Pong" id="4">
+        <field name = "nonce" type = "number" size="4" >Nonce</field>
+    </message>
+
+    <message name="New Transactions" id="5">
+        <field name="txHashes" type="chunk">Transaction Hashes</field>
+    </message>
+
+    <message name="Transactions" id="6">
+        <field name="count" type="number" size="4">Count</field>
+        <field name="txs" type="chunk">Transactions</field>
+    </message>
+
+    <message name="Get Addresses" id="7">
+    </message>
+
+    <!--<type name="Address">-->
+        <!--<field name="address" type="longstr"/>-->
+        <!--<field name="timestamp" type="number" size="8"/>-->
+    <!--</type>-->
+
+    <message name="Addresses" id="8">
+        <field name="count" type="number" size="4"/>
+        <field name="addresses" type="chunk" />
+    </message>
+
+    <message name="Get Mem Pool" id="9">
+
+    </message>
+
+    <message name="Mem Pool" id="10">
+        <field name="txHashes" type="chunk">Transactions Hashes</field>
+    </message>
+
+    <message name="Get Transactions" id="11">
+        <field name="txHashes" type="chunk">Transactions Hashes</field>
+    </message>
+
+    <message name="Get Block" id="12">
+        <field name="blockHash" type="octets" size="32">BlockHash</field>
+    </message>
+
+    <message name="Block" id="13">
+        <field name="block" type="chunk">Block</field>
+    </message>
+
+    <message name="Get Tip" id="14">
+    </message>
+
+    <message name="Tip" id="15">
+        <field name="block header" type="octets" size="100">block header</field>
+    </message>
+
+    <message name="New Block" id="16">
+        <field name="block header" type="octets" size="100">block header</field>
+    </message>
+
+    <message name="Get Headers" id="17">
+        <field name="from" type="chunk">From</field>
+        <field name="endHash" type="octets" size="32">End Hash</field>
+    </message>
+
+    <message name="Headers" id="18">
+        <field name="headers" type="chunk">headers</field>
+    </message>
+
+    <message name="Unknown Peer" id="100">
+    </message>
+
+    <message name="Unknown Message" id="101">
+        <field name="message id" type="number" size="1" />
+    </message>
+
+    <message name="Incorrect Network" id="102">
+    </message>
+</class>

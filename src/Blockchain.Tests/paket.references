@@ -1,0 +1,10 @@
+FSharp.Data
+FSharp.Compiler.Tools
+FSharp.Core redirects: on
+FsUnit
+FsCheck.NUnit
+metavcoin_secp256k1_linux
+metavcoin_secp256k1_osx
+FSharpx.Extras
+Logary
+Zulib

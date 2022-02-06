@@ -1,0 +1,171 @@
+<class
+        name = "InProcMessage"
+        signature = "19634"
+        title = "Inproc Message"
+        script = "zproto_codec_fs"
+        source_dir = "./"
+        test_dir ="../../Network.Tests/"
+        module ="Network.Transport.InProcMessage"
+        test_module="Network.Tests.InProcMessageTests"
+>
+    <message name="Connect" id="1">
+        <field name="address" type="longstr">Address</field>
+    </message>
+
+    <message name="Connected" id="2">
+        <field name="address" type="longstr">Address</field>
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Accepted" id="3">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Disconnected" id="4">
+        <field name="address" type="longstr">Address</field>
+    </message>
+
+    <message name="Transactions" id="10">
+        <field name="count" type="number" size="4">Count</field>
+        <field name="txs" type="chunk">Transactions</field>
+    </message>
+
+    <message name="Send Address" id="11">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="addressTimestamp" type="chunk">Address</field>
+    </message>
+
+    <message name="Publish Addresses" id="12">
+        <field name="count" type="number" size="4" />
+        <field name="addresses" type="chunk" />
+    </message>
+
+    <message name="Get Addresses" id="13">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Addresses" id="14">
+        <field name="count" type="number" size="4" />
+        <field name="addresses" type="chunk" />
+    </message>
+
+    <message name="Send Addresses" id="15">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="count" type="number" size="4" />
+        <field name="addresses" type="chunk"/>
+    </message>
+
+    <message name="Get Mem Pool" id="16">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Mem Pool" id="17">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="txs" type="chunk">Transactions</field>
+    </message>
+
+    <message name="Get Transactions" id="18">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="txHashes" type="chunk">TransactionHash</field>
+    </message>
+
+    <message name="Send Transactions" id="19">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="count" type="number" size="4">Count</field>
+        <field name="txs" type="chunk">Tx</field>
+    </message>
+
+    <message name="Block" id="20">
+        <field name="peerId" type="octets" size="4">Peer Id</field>sl
+        <field name="block" type="chunk">Block</field>
+    </message>
+
+    <message name="Tip" id="21">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="block header" type="octets" size="100">Block Header</field>
+    </message>
+
+    <message name="Publish Block" id="22">
+        <field name="block header" type="octets" size="100">Block Header</field>
+    </message>
+
+    <message name="New Block" id="23">
+        <field name="block header" type="octets" size="100">Block Header</field>
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Get Block" id="24">
+        <field name="blockHash" type="octets" size="32">BlockHash</field>
+    </message>
+
+    <message name="Get Block From" id="25">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="blockHash" type="octets" size="32">BlockHash</field>
+    </message>
+
+    <message name="Block Request" id="26">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="blockHash" type="octets" size="32">BlockHash</field>
+    </message>
+
+    <message name="Send Block" id="27">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="block" type="chunk">Block</field>
+    </message>
+
+    <message name="Send Tip" id="28">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="block header" type="octets" size="100">Block Header</field>
+    </message>
+
+    <message name="Get Tip" id="29">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Publish Address To All" id="30">
+        <field name="addressTimestamp" type="chunk">Address</field>
+    </message>
+
+    <message name="Get Headers" id="31">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="from" type="chunk">From</field>
+        <field name="endHash" type="octets" size="32">End Hash</field>
+    </message>
+
+    <message name="Headers Request" id="32">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="from" type="chunk">From</field>
+        <field name="endHash" type="octets" size="32">End Hash</field>
+    </message>
+
+    <message name="Send Headers" id="33">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="headers" type="chunk">headers</field>
+    </message>
+
+    <message name="Headers" id="34">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="headers" type="chunk">headers</field>
+    </message>
+
+    <message name="Disconnect Peer" id="35">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+    </message>
+
+    <message name="Publish Transactions" id="36">
+        <field name="txHashes" type="chunk">Transaction Hashes</field>
+    </message>
+
+    <message name="New Transactions" id="37">
+        <field name="peerId" type="octets" size="4">Peer Id</field>
+        <field name="txHashes" type="chunk">Transaction Hashes</field>
+    </message>
+
+    <message name="Get Tip From All Peers" id="38">
+
+    </message>
+
+    <message name="Update Address Timestamp" id="39">
+        <field name="address" type="longstr">Address</field>
+    </message>
+</class>

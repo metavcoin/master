@@ -1,0 +1,11 @@
+FsNetMQ
+FSharp.Core
+FSharp.Compiler.Tools
+FSharp.Control.Reactive
+System.Reactive.Compatibility
+FSharp.Configuration
+Argu
+metavcoin_secp256k1_linux
+metavcoin_secp256k1_osx
+Logary
+Zulib

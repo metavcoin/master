@@ -1,0 +1,12 @@
+FsUnit
+FsCheck.NUnit
+FSharp.Compiler.Tools
+metavcoin_secp256k1_linux
+metavcoin_secp256k1_osx
+Logary
+FsNetMQ
+FSharp.Core redirects: on
+SpecFlow.NUnit
+Zulib
+CGPContract
+NBitcoin

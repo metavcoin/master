@@ -1,0 +1,12 @@
+[Unit]
+Description=metavcoin
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/lib/node_modules/@metavcoin/metavcoin-node/Release/
+ExecStart=/usr/bin/mono /usr/lib/node_modules/@metavcoin/metavcoin-node/Release/metavcoin-node.exe --data-path /var/metavcoin/
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

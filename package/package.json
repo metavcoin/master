@@ -1,0 +1,11 @@
+{
+  "author":"metavcoin",
+  "name":"@metavcoin/metavcoin-node",
+  "version":"0.3.2",
+  "main":"index.js",
+  "bin": {
+    "metavcoin-node":"metavcoin-node.js",
+    "metavcoin-cli":"metavcoin-cli.js"
+  },
+  "homepage": "https://gitlab.com/metavcoin/metavcoin/tree/master/package"
+}
